@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import { BsFillLightbulbFill } from "react-icons/bs";
@@ -6,10 +6,28 @@ import { BsCartFill, BsFillCalendarEventFill, BsCheckCircleFill } from "react-ic
 
 import ProgressComponent from "./ProgressComponent";
 import { Text } from "@nextui-org/react";
+import { WhatObjective } from "./NewCampaignSteps.jsx/WhatObjective";
+import { ChooseProduct } from "./NewCampaignSteps.jsx/ChooseProduct";
+import { CampaignSettings } from "./NewCampaignSteps.jsx/CampaignSettings";
 export const AddCampaign = () => {
+  const [steps, setSteps] = useState(3);
+
+  let activeStep = null;
+
+  if (steps === 1) {
+    activeStep = <WhatObjective />;
+  }
+
+  if (steps === 2) {
+    activeStep = <ChooseProduct />;
+  }
+  if (steps === 3) {
+    activeStep = <CampaignSettings />;
+  }
+
   return (
     <>
-      {/* header */}
+      {/* HEADER  */}
       <div className="flex justify-between items-center mb-3 ">
         <div className="flex flex-col space-y-1">
           <Text h2 className="m-0" color="#000">
@@ -20,10 +38,10 @@ export const AddCampaign = () => {
           </Text>
         </div>
       </div>
-
-      <div className="max-w-6xl mt-10 mx-auto  ">
+      {/* PROGRESS BAR */}
+      <div className="max-w-6xl mt-20 mx-auto  ">
         <ProgressBar
-          percent={20}
+          percent={75}
           filledBackground="#FFB963"
           height="5px"
           unfilledBackground="#F5F5F5"
@@ -67,6 +85,7 @@ export const AddCampaign = () => {
           </Step>
         </ProgressBar>
       </div>
+      {activeStep}
     </>
   );
 };

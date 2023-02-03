@@ -7,6 +7,7 @@ import { ImCheckboxUnchecked } from "react-icons/im";
 import { getCampaigns } from "../api";
 import Campaign from "./Campaign";
 import Loader from "./Loader";
+import { Link } from "react-router-dom";
 const AllCampaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
 
@@ -35,14 +36,14 @@ const AllCampaigns = () => {
             Check the list of campaigns you created
           </Text>
         </div>
-        <div>
+        <Link to="/add">
           <Button>
             <span className="mr-2">
               <AiOutlinePlusCircle size={20} />
             </span>
             Create new campaign
           </Button>
-        </div>
+        </Link>
       </div>
 
       {/* main content */}
