@@ -8,3 +8,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.ant-select-selection-placeholder {
+  opacity: 1 !important;
+  color: black !important;
+}

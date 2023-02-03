@@ -18,6 +18,7 @@ export const getCampaigns = async () => {
         platform
         start
         startDate
+        createdAt
       }
     }
   `;

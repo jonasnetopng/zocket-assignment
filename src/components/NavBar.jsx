@@ -6,15 +6,7 @@ import { FaCrown, FaBell } from "react-icons/fa";
 import { BsGiftFill, BsFillCaretDownFill, BsTranslate } from "react-icons/bs";
 
 const NavBar = () => {
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const campaigns = await getCampaigns();
 
-  //       console.log(campaigns);
-  //     };
-
-  //     fetchData();
-  //   }, []);
 
   return (
     <>
