@@ -1,5 +1,5 @@
 import { Button, Card, Text } from "@nextui-org/react";
-import React, {  useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Input } from "@nextui-org/react";
 import { Select } from "antd";
@@ -16,7 +16,6 @@ const AllCampaigns = () => {
 
   const searchInputRef = useRef();
 
-  console.log(campaigns);
   // operative campaigns denotes any campaigns that have fetched after any filter i.e search,  status etc
   const [operativeCampaigns, setOperativeCampaigns] = useState(null);
 
@@ -188,14 +187,14 @@ const AllCampaigns = () => {
           </div>
           {/* campaign-option-header */}
           <div className="campaign_labels flex rounded-md bg-[#EAEAEA] text-[#00000080] p-3 mt-3">
-            <div className="  basis-[200px] flex items-center space-x-2">
+            <div className="  basis-[150px] flex items-center space-x-2">
               <ImCheckboxUnchecked />
               <span>On/Off</span>
             </div>
             <div className="basis-[400px]">Campaign</div>
             <div className="basis-[400px]">Date Range</div>
             <div className="basis-[200px]">Clicks</div>
-            <div className="basis-[200px]">Budget</div>
+            <div className="basis-[200px] ">Budget</div>
             <div className="basis-[100px]">Location</div>
             <div className="basis-[200px] flex justify-center ">Platform</div>
             <div className="basis-[200px]">Status</div>

@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 * {
-  font-family: "Cabin", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: "Questrial", sans-serif !important;
+  /* box-sizing: border-box !important; */
+  letter-spacing: 0.2px !important;
 }
 
 .ant-select-selection-placeholder {

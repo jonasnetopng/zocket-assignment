@@ -9,7 +9,7 @@ export const CampaignSettings = () => {
   const setSteps = useCommonStore((state) => state.setSteps);
 
   const onChange = (date, dateString) => {
-    console.log(date, dateString);
+    // to date stuff
   };
   return (
     <>

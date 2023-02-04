@@ -22,7 +22,7 @@ export const WhatObjective = () => {
                     <div className="flex space-x-3 items-center">
                       <BsFillTelephoneForwardFill color="#0F6EFF" size={20} />
                       <div className="flex flex-col space-y-1">
-                        <p className="text-[#0B1A33]  text-xs font-bold">Get Leads as calls</p>
+                        <p className="text-[#0B1A33]  text-md font-bold">Get Leads as calls</p>
                         <p className="text-gray-500 text-xs">
                           Reach broad audience and get leads through calls
                         </p>

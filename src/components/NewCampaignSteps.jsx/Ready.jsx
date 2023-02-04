@@ -5,6 +5,7 @@ import { AiFillLike } from "react-icons/ai";
 import useCommonStore from "../../Store/store";
 const Ready = () => {
   const campaigns = useCommonStore((state) => state.allCampaigns);
+
   return (
     <>
       <Card variant="bordered" css={{ marginTop: "$20" }}>
@@ -47,7 +48,7 @@ const Ready = () => {
                       alt="cake_image"
                     />
                   </div>
-                  <div className="ad_actions p-2 flex justify-between bg-[#F5F5F5]">
+                  <div className="ad_actions p-2 flex justify-between items-center bg-[#F5F5F5]">
                     <Text className="text-md font-semibold " color="#2B23A5">
                       Lavanya Cake Shop
                     </Text>{" "}
