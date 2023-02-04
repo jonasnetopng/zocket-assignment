@@ -1,28 +1,74 @@
 import { Button, Card, Text } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Input } from "@nextui-org/react";
 import { Select } from "antd";
 import { ImCheckboxUnchecked } from "react-icons/im";
-import { getCampaigns } from "../api";
 import Campaign from "./Campaign";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
+import useCommonStore from "../Store/store";
+import { DateTime } from "luxon";
+
+
 const AllCampaigns = () => {
-  const [campaigns, setCampaigns] = useState([]);
-
+  // campaigns data coming from store
+  const campaigns = useCommonStore((state) => state.allCampaigns);
+  const searchInputRef = useRef();
+  // getCampaigns is the request to call data from api, this is too from store
+  const getCampaigns = useCommonStore((state) => state.getCampaigns);
   useEffect(() => {
-    const fetchData = async () => {
-      const campaignsResponse = await getCampaigns();
+    // loading on first load
+    console.log("check loading");
+    getCampaigns();
+  }, [getCampaigns]);
 
-      setCampaigns(campaignsResponse);
-    };
+  // operative campaigns denotes any campaigns that have fetched after any filter i.e search,  status etc
+  const [operativeCampaigns, setOperativeCampaigns] = useState(null);
 
-    fetchData();
-  }, []);
-  const onChange = (value) => {
-    console.log(`selected ${value}`);
+  const onPlatformChange = (value) => {
+    if (value === "all") {
+      setOperativeCampaigns(campaigns);
+      return;
+    }
+    setOperativeCampaigns(campaigns.filter((campaign) => campaign.platform.startsWith(value[0])));
   };
+
+  const onStatusChange = (value) => {
+    if (value === "all") {
+      setOperativeCampaigns(campaigns);
+      return;
+    }
+    setOperativeCampaigns(
+      campaigns.filter((campaign) => campaign.campaign_status.toLowerCase().startsWith(value[0])),
+    );
+  };
+  const onDateChange = (days) => {
+    const subtractedDate = DateTime.now().minus({ days: +days }).toISODate();
+    setOperativeCampaigns(campaigns.filter((campaign) => campaign.startDate > subtractedDate));
+  };
+
+  const handleSearch = () => {
+    const searchTerm = searchInputRef.current.value.toLowerCase();
+
+    const getSearched = (campaign) => {
+      return campaign.campaignTitle.toLowerCase().includes(searchTerm);
+    };
+    setOperativeCampaigns(campaigns.filter(getSearched));
+  };
+
+  const handleDelete = (campaignId) => {
+    setOperativeCampaigns(campaigns.filter((campaign) => campaign.id !== campaignId));
+  };
+
+
+
+
+
+
+  let finalCampaigns = null;
+  // checking to show whether the searched or the fetched ones from api
+  finalCampaigns = operativeCampaigns ? operativeCampaigns : campaigns;
 
   return (
     <>
@@ -55,6 +101,8 @@ const AllCampaigns = () => {
               color="#00000080"
               size="md"
               width="250px"
+              ref={searchInputRef}
+              onChange={handleSearch}
             />
             <div className="filter-parts flex space-x-10">
               <div className="platform-filter flex space-x-3 items-center">
@@ -62,31 +110,33 @@ const AllCampaigns = () => {
                 <Select
                   showSearch
                   size="large"
+                  className="min-w-[150px]"
+                  dropdownMatchSelectWidth={true}
                   placeholder="All Platform"
                   optionFilterProp="children"
-                  onChange={onChange}
+                  onChange={onPlatformChange}
                   filterOption={(input, option) =>
                     (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
                   }
                   options={[
                     {
-                      value: "All platform",
+                      value: "all",
                       label: "All platform",
                     },
                     {
-                      value: "Google",
+                      value: "google",
                       label: "Google",
                     },
                     {
-                      value: "FB",
+                      value: "fB",
                       label: "FB",
                     },
                     {
-                      value: "Youtube",
+                      value: "yt",
                       label: "Youtube",
                     },
                     {
-                      value: "Instagram",
+                      value: "ig",
                       label: "Instagram",
                     },
                   ]}
@@ -99,25 +149,25 @@ const AllCampaigns = () => {
                   size="large"
                   placeholder="All Status"
                   optionFilterProp="children"
-                  onChange={onChange}
+                  onChange={onStatusChange}
                   filterOption={(input, option) =>
                     (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
                   }
                   options={[
                     {
-                      value: "All Status",
+                      value: "all",
                       label: "All Status",
                     },
                     {
-                      value: "Live now",
+                      value: "ln",
                       label: "Live now",
                     },
                     {
-                      value: "Paused",
+                      value: "pa",
                       label: "Paused",
                     },
                     {
-                      value: "Exhausted",
+                      value: "ex",
                       label: "Exhausted",
                     },
                   ]}
@@ -129,17 +179,17 @@ const AllCampaigns = () => {
                   size="large"
                   placeholder="Last 30 days"
                   optionFilterProp="children"
-                  onChange={onChange}
+                  onChange={onDateChange}
                   filterOption={(input, option) =>
                     (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
                   }
                   options={[
                     {
-                      value: "Last 30 days",
+                      value: "30",
                       label: "Last 30 days",
                     },
                     {
-                      value: "Last 15 days",
+                      value: "15",
                       label: "Last 15 days",
                     },
                   ]}
@@ -164,10 +214,12 @@ const AllCampaigns = () => {
           </div>
 
           {/* all campaigns */}
-          {!campaigns ? (
+          {!finalCampaigns ? (
             <Loader />
           ) : (
-            campaigns?.map((item) => <Campaign key={item.id} data={item} />)
+            finalCampaigns?.map((item) => (
+              <Campaign key={item.id} data={item} onDelete={handleDelete} />
+            ))
           )}
         </Card.Body>
       </Card>

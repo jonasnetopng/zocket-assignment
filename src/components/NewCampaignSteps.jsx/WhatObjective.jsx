@@ -1,7 +1,11 @@
 import { Button, Card, Text } from "@nextui-org/react";
 import React from "react";
 import { BsFillTelephoneForwardFill } from "react-icons/bs";
+import useCommonStore from "../../Store/store";
 export const WhatObjective = () => {
+  // steps function to increase step on progress
+  const setSteps = useCommonStore((state) => state.setSteps);
+
   return (
     <>
       <Card variant="bordered" css={{ marginTop: "$20", padding: "$4" }}>
@@ -32,7 +36,7 @@ export const WhatObjective = () => {
         </Card.Body>
       </Card>
       <div className="flex justify-end mt-3">
-        <Button>Continue</Button>
+        <Button onPress={setSteps}>Continue</Button>
       </div>
     </>
   );

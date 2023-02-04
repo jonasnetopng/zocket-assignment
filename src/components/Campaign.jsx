@@ -12,9 +12,7 @@ const getFormattedDate = (date) => {
   return DateTime.fromISO(date).toFormat("dd LLL yyyy");
 };
 
-const Campaign = ({ data }) => {
-  console.log(data);
-
+const Campaign = ({ data, onDelete }) => {
   return (
     <div className="campaign_labels  flex border-b-2 border-gray-200  p-3 pb-5 mt-3">
       <div className="basis-[200px]  flex items-center space-x-3">
@@ -55,8 +53,8 @@ const Campaign = ({ data }) => {
         </Badge>
       </div>
       <div className="basis-[200px] items-center flex space-x-5">
-        <FiEdit3 color="#0F6EFF"  size={18} />
-        <AiOutlineDelete color="#FC3F3F"  size={18} />
+        <FiEdit3 color="#0F6EFF" size={18} />
+        <AiOutlineDelete color="#FC3F3F" onClick={() => onDelete(data.id)} size={18} />
       </div>
     </div>
   );

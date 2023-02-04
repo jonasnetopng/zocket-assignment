@@ -9,20 +9,33 @@ import { Text } from "@nextui-org/react";
 import { WhatObjective } from "./NewCampaignSteps.jsx/WhatObjective";
 import { ChooseProduct } from "./NewCampaignSteps.jsx/ChooseProduct";
 import { CampaignSettings } from "./NewCampaignSteps.jsx/CampaignSettings";
+import Ready from "./NewCampaignSteps.jsx/Ready";
+import useCommonStore from "../Store/store";
+
 export const AddCampaign = () => {
-  const [steps, setSteps] = useState(3);
+  const steps = useCommonStore((state) => state.steps);
+
+  console.log(steps);
 
   let activeStep = null;
+  let completion = 25;
 
   if (steps === 1) {
     activeStep = <WhatObjective />;
   }
 
   if (steps === 2) {
+    completion = 50;
     activeStep = <ChooseProduct />;
   }
   if (steps === 3) {
+    completion = 75;
     activeStep = <CampaignSettings />;
+  }
+
+  if (steps === 4) {
+    completion = 100;
+    activeStep = <Ready />;
   }
 
   return (
@@ -39,9 +52,9 @@ export const AddCampaign = () => {
         </div>
       </div>
       {/* PROGRESS BAR */}
-      <div className="max-w-6xl mt-20 mx-auto  ">
+      <div className="max-w-6xl mt-14 mx-auto  ">
         <ProgressBar
-          percent={75}
+          percent={completion}
           filledBackground="#FFB963"
           height="5px"
           unfilledBackground="#F5F5F5"
