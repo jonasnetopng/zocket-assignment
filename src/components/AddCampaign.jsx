@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
-import { BsFillLightbulbFill } from "react-icons/bs";
-import { BsCartFill, BsFillCalendarEventFill, BsCheckCircleFill } from "react-icons/bs";
+import {
+  BsCartFill,
+  BsFillCalendarEventFill,
+  BsCheckCircleFill,
+  BsFillLightbulbFill,
+} from "react-icons/bs";
 
 import ProgressComponent from "./ProgressComponent";
 import { Text } from "@nextui-org/react";
