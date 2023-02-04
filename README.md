@@ -1,7 +1,8 @@
 
 ## Live Link 
 
-zocket-assignment-fe.netlify.app/
+https://zocket-assignment-fe.netlify.app/
+
 
 
 # Ad Campaign based app with filters
