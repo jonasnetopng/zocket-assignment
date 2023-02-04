@@ -13,11 +13,7 @@ const useCommonStore = create((set) => ({
     set((state) => ({ ...state, allCampaigns: campaignsResponse }));
   },
 
-  filteredCampaign : [],
-
-  
-
-
+  filteredCampaign: [],
 }));
 
 export default useCommonStore;

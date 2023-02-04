@@ -44,10 +44,10 @@ export const AddCampaign = () => {
       <div className="flex justify-between items-center mb-3 ">
         <div className="flex flex-col space-y-1">
           <Text h2 className="m-0" color="#000">
-            Your Campaigns
+            Your Ad Campaign
           </Text>
           <Text className="m-0" color="#00000080">
-            Check the list of campaigns you created
+            Launch your ad in just 3 easy steps{" "}
           </Text>
         </div>
       </div>

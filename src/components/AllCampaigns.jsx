@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import useCommonStore from "../Store/store";
 import { DateTime } from "luxon";
 
-
 const AllCampaigns = () => {
   // campaigns data coming from store
   const campaigns = useCommonStore((state) => state.allCampaigns);
@@ -60,11 +59,6 @@ const AllCampaigns = () => {
   const handleDelete = (campaignId) => {
     setOperativeCampaigns(campaigns.filter((campaign) => campaign.id !== campaignId));
   };
-
-
-
-
-
 
   let finalCampaigns = null;
   // checking to show whether the searched or the fetched ones from api
