@@ -2,7 +2,9 @@ import { Avatar, Button, Card, Text } from "@nextui-org/react";
 import React from "react";
 import { FaGlobeAmericas } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
+import useCommonStore from "../../Store/store";
 const Ready = () => {
+  const campaigns = useCommonStore((state) => state.allCampaigns);
   return (
     <>
       <Card variant="bordered" css={{ marginTop: "$20" }}>
@@ -11,8 +13,8 @@ const Ready = () => {
             Ready to go<span className="text-gray-400 ml-2 ">(Step 4 of 4)</span>
           </Text>
           <div className="product_categories p-3  pl-0 grid grid-cols-4 gap-3">
-            {Array.from(new Array(4).keys()).map((item, index) => (
-              <Card isPressable isHoverable variant="bordered">
+            {campaigns.map((item) => (
+              <Card key={item.id} isPressable isHoverable variant="bordered">
                 <Card.Body>
                   <div className="ad_header flex space-x-3 items-center">
                     <Avatar
@@ -40,7 +42,7 @@ const Ready = () => {
 
                   <div className="ad_image mt-2 bg-red-200 h-[120px]">
                     <img
-                      src="https://picsum.photos/200/300"
+                      src={item.campaignImage.url}
                       className="h-full w-full object-cover"
                       alt="cake_image"
                     />

@@ -3,8 +3,17 @@ import Dashboard from "./components/Dashboard";
 import AllCampaigns from "./components/AllCampaigns";
 import "./App.css";
 import AddCampaign from "./components/AddCampaign";
+import useCommonStore from "./Store/store";
+import { useEffect } from "react";
 
 function App() {
+  // getCampaigns is the request to call data from api, this is too from store
+  const getCampaigns = useCommonStore((state) => state.getCampaigns);
+  useEffect(() => {
+    // loading on first load
+    getCampaigns();
+  }, [getCampaigns]);
+
   return (
     <BrowserRouter>
       <Switch>

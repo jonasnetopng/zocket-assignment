@@ -19,8 +19,6 @@ import useCommonStore from "../Store/store";
 export const AddCampaign = () => {
   const steps = useCommonStore((state) => state.steps);
 
-  console.log(steps);
-
   let activeStep = null;
   let completion = 25;
 
@@ -63,7 +61,7 @@ export const AddCampaign = () => {
           height="5px"
           unfilledBackground="#F5F5F5"
         >
-          <Step transition="scale">
+          <Step>
             {({ accomplished }) => (
               <ProgressComponent
                 text="What you want to do"
@@ -72,7 +70,7 @@ export const AddCampaign = () => {
               />
             )}
           </Step>
-          <Step transition="scale">
+          <Step>
             {({ accomplished }) => (
               <ProgressComponent
                 text="Choose Product"
@@ -81,7 +79,7 @@ export const AddCampaign = () => {
               />
             )}
           </Step>
-          <Step transition="scale">
+          <Step>
             {({ accomplished }) => (
               <ProgressComponent
                 text="Campaign settings"

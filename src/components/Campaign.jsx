@@ -14,7 +14,7 @@ const getFormattedDate = (date) => {
 
 const Campaign = ({ data, onDelete }) => {
   return (
-    <div className="campaign_labels  flex border-b-2 border-gray-200  p-3 pb-5 mt-3">
+    <div className="campaign_labels  flex border-b-2 border-gray-200  p-3 pb-3 mt-3">
       <div className="basis-[200px]  flex items-center space-x-3">
         <Checkbox color="primary"></Checkbox>
         <Switch size="xs" checked={data?.start} />
@@ -54,7 +54,7 @@ const Campaign = ({ data, onDelete }) => {
       </div>
       <div className="basis-[200px] items-center flex space-x-5">
         <FiEdit3 color="#0F6EFF" size={18} />
-        <AiOutlineDelete color="#FC3F3F" onClick={() => onDelete(data.id)} size={18} />
+        <AiOutlineDelete className="cursor-pointer" color="#FC3F3F" onClick={() => onDelete(data.id)} size={18} />
       </div>
     </div>
   );

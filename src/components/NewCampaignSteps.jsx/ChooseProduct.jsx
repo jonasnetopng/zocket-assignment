@@ -16,8 +16,8 @@ export const ChooseProduct = () => {
 
           <div className="product_categories p-3  pl-0 grid grid-cols-3 gap-3">
             {[
-              Array.from(new Array(6).keys()).map((item) => (
-                <Card isPressable isHoverable variant="bordered">
+              Array.from(new Array(6).keys()).map((item, index) => (
+                <Card key={index} isPressable isHoverable variant="bordered">
                   <Card.Body>
                     <div className="flex justify-between items-center">
                       <div className="flex items-center space-x-3">

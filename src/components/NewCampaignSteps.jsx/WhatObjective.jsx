@@ -16,8 +16,8 @@ export const WhatObjective = () => {
 
           <div className="campaign_categories p-3  pl-0 grid grid-cols-3 gap-3">
             {[
-              Array.from(new Array(9).keys()).map((item) => (
-                <Card isPressable isHoverable variant="bordered">
+              Array.from(new Array(9).keys()).map((item, index) => (
+                <Card key={index} isPressable isHoverable variant="bordered">
                   <Card.Body>
                     <div className="flex space-x-3 items-center">
                       <BsFillTelephoneForwardFill color="#0F6EFF" size={20} />

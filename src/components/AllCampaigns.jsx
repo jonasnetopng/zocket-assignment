@@ -1,5 +1,5 @@
 import { Button, Card, Text } from "@nextui-org/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Input } from "@nextui-org/react";
 import { Select } from "antd";
@@ -13,15 +13,10 @@ import { DateTime } from "luxon";
 const AllCampaigns = () => {
   // campaigns data coming from store
   const campaigns = useCommonStore((state) => state.allCampaigns);
-  const searchInputRef = useRef();
-  // getCampaigns is the request to call data from api, this is too from store
-  const getCampaigns = useCommonStore((state) => state.getCampaigns);
-  useEffect(() => {
-    // loading on first load
-    console.log("check loading");
-    getCampaigns();
-  }, [getCampaigns]);
 
+  const searchInputRef = useRef();
+
+  console.log(campaigns);
   // operative campaigns denotes any campaigns that have fetched after any filter i.e search,  status etc
   const [operativeCampaigns, setOperativeCampaigns] = useState(null);
 
@@ -87,7 +82,7 @@ const AllCampaigns = () => {
       </div>
 
       {/* main content */}
-      <Card variant="bordered" css={{ height: "60vh", padding: "$5" }}>
+      <Card variant="bordered" css={{ height: "70vh", padding: "$2" }}>
         <Card.Body>
           <div className="filters flex py-3 justify-between items-center">
             <Input
