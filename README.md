@@ -1,70 +1,71 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Link 
 
-## Available Scripts
+zocket-assignment-fe.netlify.app/
 
-In the project directory, you can run:
 
-### `npm start`
+# Ad Campaign based app with filters
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A app made with react, tailwind and zustand as state managment library
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application is composed of the following Features:
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- View all campaigns throught API
+- Filter by platform, status and date range
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Frontend Libraries
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React Router DOM : For routing different pages on the app to different component
+- antd : Antdesign for ready made components such as select and range.
+- graphql & graphql-request : For calling graphql query in the frontend
+- Luxon : Used for date formatting 
+- react-content-loader : For showing dummy skelton up till response fetching from the API
+- react-icons : For component based icons
+- Zustand : State management for react
 
-### `npm run eject`
+## Backend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Developed dummy api from hyGraph
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Screenshots
 
-### Making a Progressive Web App
+![All campaigns Screenshot](https://github.com/akki251/zocket-assignment/blob/master/allCampaignsSS.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Run Locally
 
-### Advanced Configuration
+Clone the project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+ https://github.com/akki251/zocket-assignment.git
+```
 
-### Deployment
+Go to the project directory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+  cd zocket-assignment
+```
 
-### `npm run build` fails to minify
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm install
+```
+
+Start the Client
+
+```bash
+  npm run  start
+```
